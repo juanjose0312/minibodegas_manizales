@@ -1,0 +1,75 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Marco de la bodega -->
+  <g transform="translate(100, 100)">
+    <!-- Marco exterior -->
+    <rect x="-90" y="-65" width="180" height="140" rx="4" fill="#333" opacity="0.15"/>
+    <rect x="-85" y="-60" width="170" height="130" rx="3" fill="#1A1A1A"/>
+    
+    <!-- Persiana enrollable - láminas horizontales -->
+    <g id="persiana">
+      <!-- Lámina 1 -->
+      <rect x="-80" y="-55" width="160" height="11" rx="1.5" fill="#E85B10"/>
+      <rect x="-80" y="-54.5" width="160" height="3" fill="#FF7A2F" opacity="0.6"/>
+      <line x1="-80" y1="-49" x2="80" y2="-49" stroke="#C44D0D" stroke-width="0.5"/>
+      
+      <!-- Lámina 2 -->
+      <rect x="-80" y="-42" width="160" height="11" rx="1.5" fill="#E85B10"/>
+      <rect x="-80" y="-41.5" width="160" height="3" fill="#FF7A2F" opacity="0.6"/>
+      <line x1="-80" y1="-36" x2="80" y2="-36" stroke="#C44D0D" stroke-width="0.5"/>
+      
+      <!-- Lámina 3 -->
+      <rect x="-80" y="-29" width="160" height="11" rx="1.5" fill="#E85B10"/>
+      <rect x="-80" y="-28.5" width="160" height="3" fill="#FF7A2F" opacity="0.6"/>
+      <line x1="-80" y1="-23" x2="80" y2="-23" stroke="#C44D0D" stroke-width="0.5"/>
+      
+      <!-- Lámina 4 (central con cerradura) -->
+      <rect x="-80" y="-16" width="160" height="11" rx="1.5" fill="#E85B10"/>
+      <rect x="-80" y="-15.5" width="160" height="3" fill="#FF7A2F" opacity="0.6"/>
+      <line x1="-80" y1="-10" x2="80" y2="-10" stroke="#C44D0D" stroke-width="0.5"/>
+      
+      <!-- Lámina 5 -->
+      <rect x="-80" y="-3" width="160" height="11" rx="1.5" fill="#E85B10"/>
+      <rect x="-80" y="-2.5" width="160" height="3" fill="#FF7A2F" opacity="0.6"/>
+      <line x1="-80" y1="3" x2="80" y2="3" stroke="#C44D0D" stroke-width="0.5"/>
+      
+      <!-- Lámina 6 -->
+      <rect x="-80" y="10" width="160" height="11" rx="1.5" fill="#E85B10"/>
+      <rect x="-80" y="10.5" width="160" height="3" fill="#FF7A2F" opacity="0.6"/>
+      <line x1="-80" y1="16" x2="80" y2="16" stroke="#C44D0D" stroke-width="0.5"/>
+      
+      <!-- Lámina 7 -->
+      <rect x="-80" y="23" width="160" height="11" rx="1.5" fill="#E85B10"/>
+      <rect x="-80" y="23.5" width="160" height="3" fill="#FF7A2F" opacity="0.6"/>
+      <line x1="-80" y1="29" x2="80" y2="29" stroke="#C44D0D" stroke-width="0.5"/>
+      
+      <!-- Lámina 8 -->
+      <rect x="-80" y="36" width="160" height="11" rx="1.5" fill="#E85B10"/>
+      <rect x="-80" y="36.5" width="160" height="3" fill="#FF7A2F" opacity="0.6"/>
+      <line x1="-80" y1="42" x2="80" y2="42" stroke="#C44D0D" stroke-width="0.5"/>
+      
+      <!-- Lámina 9 (inferior) -->
+      <rect x="-80" y="49" width="160" height="11" rx="1.5" fill="#E85B10"/>
+      <rect x="-80" y="49.5" width="160" height="3" fill="#FF7A2F" opacity="0.6"/>
+      <line x1="-80" y1="55" x2="80" y2="55" stroke="#C44D0D" stroke-width="0.5"/>
+    </g>
+    
+    <!-- Cerradura central de la persiana -->
+    <g id="cerradura">
+      <!-- Base rectangular de la cerradura -->
+      <rect x="-12" y="-5" width="24" height="35" rx="2" fill="#1A1A1A"/>
+      <rect x="-10" y="-3" width="20" height="31" rx="1.5" fill="#333"/>
+      
+      <!-- Cilindro de cerradura -->
+      <circle cx="0" cy="8" r="6" fill="#FFD700"/>
+      <circle cx="0" cy="8" r="4" fill="#1A1A1A"/>
+      <circle cx="0" cy="8" r="1.5" fill="#FFD700"/>
+      
+      <!-- Manija para abrir -->
+      <rect x="-3" y="17" width="6" height="8" rx="1" fill="#FFD700"/>
+    </g>
+    
+    <!-- Rieles laterales de la persiana -->
+    <rect x="-88" y="-60" width="4" height="130" fill="#666"/>
+    <rect x="84" y="-60" width="4" height="130" fill="#666"/>
+  </g>
+</svg>
