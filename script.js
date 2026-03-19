@@ -171,6 +171,12 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate');
+          
+          // Si es la insignia de 10 años, lanzar confeti
+          if (entry.target.id === 'badge10years') {
+            createConfetti();
+          }
+          
           observer.unobserve(entry.target);
         }
       });
@@ -179,6 +185,100 @@
     animatedElements.forEach(element => {
       observer.observe(element);
     });
+  }
+
+  // ============================================
+  // EFECTO DE CONFETI
+  // ============================================
+  
+  function createConfetti() {
+    const canvas = document.getElementById('confetti-canvas');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    const badge = document.getElementById('badge10years');
+    if (!badge) return;
+    
+    const rect = badge.getBoundingClientRect();
+    const badgeCenterX = rect.left + rect.width / 2;
+    const badgeCenterY = rect.top + rect.height / 2;
+    
+    // Configurar tamaño del canvas con DPI para pantallas de alta resolución
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width = window.innerWidth + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    ctx.scale(dpr, dpr);
+    
+    const confetti = [];
+    const colors = ['#FFD700', '#FFA500', '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFE66D', '#FF6B9D'];
+    const confettiCount = 100;
+    
+    // Crear partículas de confeti
+    for (let i = 0; i < confettiCount; i++) {
+      confetti.push({
+        x: badgeCenterX,
+        y: badgeCenterY,
+        vx: (Math.random() - 0.5) * 8,
+        vy: (Math.random() - 0.5) * 8 - 2,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        size: Math.random() * 6 + 3,
+        rotation: Math.random() * Math.PI * 2,
+        rotationSpeed: (Math.random() - 0.5) * 0.2,
+        shape: Math.random() > 0.5 ? 'circle' : 'square'
+      });
+    }
+    
+    let animationId;
+    let frameCount = 0;
+    const maxFrames = 120; // ~2 segundos a 60fps
+    
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      confetti.forEach((particle, index) => {
+        // Actualizar posición
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+        particle.vy += 0.2; // Gravedad
+        particle.rotation += particle.rotationSpeed;
+        
+        // Dibujar partícula
+        ctx.save();
+        ctx.translate(particle.x, particle.y);
+        ctx.rotate(particle.rotation);
+        ctx.fillStyle = particle.color;
+        
+        if (particle.shape === 'circle') {
+          ctx.beginPath();
+          ctx.arc(0, 0, particle.size, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          ctx.fillRect(-particle.size, -particle.size, particle.size * 2, particle.size * 2);
+        }
+        
+        ctx.restore();
+        
+        // Remover partículas que salieron de la pantalla o después de muchos frames
+        if (particle.y > canvas.height + 50 || frameCount > maxFrames) {
+          confetti.splice(index, 1);
+        }
+      });
+      
+      frameCount++;
+      
+      if (confetti.length > 0 && frameCount < maxFrames * 2) {
+        animationId = requestAnimationFrame(animate);
+      } else {
+        // Limpiar canvas cuando termine la animación
+        setTimeout(() => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }, 500);
+      }
+    }
+    
+    animate();
   }
 
   // ============================================
@@ -218,7 +318,7 @@
       }
       
       // Crear mensaje para WhatsApp
-      const whatsappMessage = `Hola, mi nombre es ${name}.\nTeléfono: ${phone}${email ? `\nEmail: ${email}` : ''}\n\nMensaje: ${message}`;
+      const whatsappMessage = `Hola, mi nombre es ${name}.\nTeléfono: ${phone}${email ? `\nEmail: ${email}` : ''}\nCiudad: Manizales\n\nMensaje: ${message}`;
       const whatsappUrl = `https://wa.me/573136408620?text=${encodeURIComponent(whatsappMessage)}`;
       
       // Abrir WhatsApp
